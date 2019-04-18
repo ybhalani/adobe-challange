@@ -1,0 +1,80 @@
+<div class="container-fluid page-title">
+  <div class="text-center">
+    <h1>Dupes Finder</h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Leads</h3>
+      <div class="scroll-container">
+        <pre>{{data | json}}</pre>
+      </div>
+      <div class="text-center">
+        <button (click)="findDupes()" type="button" class="btn btn-primary">Find Dupes </button>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <h3>Logs</h3>
+      <div class="scroll-container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Log Text</th>
+              <th>data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let log of logs">
+              <td>{{log.text}}</td>
+              <td>
+                <pre>{{log.item | json}}</pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="outputVisible">
+  <div class="container-fluid page-title">
+    <div class="text-center">
+      <h1>Output</h1>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Source Data</h3>
+        <div class="scroll-container">
+          <pre>{{data | json}}</pre>
+        </div>
+        <div class="text-center">
+          <button (click)="downloadSoureData()" type="button" class="btn btn-primary">Download Source Data</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Deduplicated Data</h3>
+        <div class="scroll-container">
+          <pre>{{deDuplicatedData | json}}</pre>
+        </div>
+        <div class="text-center">
+          <button (click)="downloadDeduplicatedData()" type="button" class="btn btn-primary">Download Deduplicated
+            Data</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Duplicate Data</h3>
+        <div class="scroll-container">
+          <pre>{{duplicateData | json}}</pre>
+        </div>
+        <div class="text-center">
+          <button (click)="downloadDuplicateData()" type="button" class="btn btn-primary">Download Duplicate
+            Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
